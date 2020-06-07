@@ -33,18 +33,17 @@
       `
       dataPanel.innerHTML = htmlContent
     })
-
-    dataPanel.addEventListener('click', (event) => {
-      if (event.target.matches('.friend-img')) {
-        //dataset
-        console.log(event.target.dataset.id)
-
-        //get detail
-        showFriend(event.target.dataset.id)
-      }
-    })
   }
 
+  dataPanel.addEventListener('click', (event) => {
+    if (event.target.matches('.friend-img')) {
+      //dataset
+      console.log(event.target.dataset.id)
+
+      //get detail
+      showFriend(event.target.dataset.id)
+    }
+  })
 
   const modalTitle = document.querySelector('#show-friend-title')
   const modalImage = document.getElementById('show-friend-image')
@@ -55,13 +54,19 @@
 
     let htmlContent = ''
     const url = INDEX_URL + '/' + id
+
+    modalTitle.textContent = ''
+    modalDescription.innerHTML = ''
+    modalImage.innerHTML = ''
+
+
     axios.get(url)
       .then((response) => {
         const data = response.data
         console.log(data)
 
         // mutil condition mask
-        const filterItems = ["id", "avatar", "name", "surname", "created_at"]
+        const filterItems = ['id', 'avatar', 'name', 'surname', 'created_at']
         Object.keys(data).forEach(function (key) {
           if (!filterItems.includes(key)) {
             console.log(key + ': ' + data[key])
@@ -79,18 +84,5 @@
       })
       .catch((err) => console.log(err))
   }
-
-
-  //dismiss click
-  const dismiss = document.querySelector('#dismiss')
-  dismiss.addEventListener('click', (event) => {
-    console.log(event.target)
-    modalTitle.textContent = ""
-    modalDescription.innerHTML = ""
-    modalImage.innerHTML = ""
-  })
-
-
-
 
 })()
