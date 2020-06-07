@@ -25,9 +25,7 @@
         <div class="col-6 col-sm-4 col-md-3 col-lg-2">
           <div class="card mb-2">
             <img class="card-img-top friend-img" src="${item.avatar}" data-target="#show-friend-modal" data-toggle="modal" data-id="${item.id}" style="cursor:pointer" alt="Card image cap" >
-            <div class="card-body">
               <h5 class="card-title">${item.name}</h5>
-            </div>
           </div>
         </div>
       `
