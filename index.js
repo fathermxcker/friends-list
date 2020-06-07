@@ -51,14 +51,13 @@
   const modalDescription = document.getElementById('show-friend-description')
 
   function showFriend(id) {
-
     let htmlContent = ''
     const url = INDEX_URL + '/' + id
 
+    //clean previous data
     modalTitle.textContent = ''
     modalDescription.innerHTML = ''
     modalImage.innerHTML = ''
-
 
     axios.get(url)
       .then((response) => {
